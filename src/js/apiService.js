@@ -18,6 +18,7 @@ function fetchImages(query) {
     fetch(`https://pixabay.com/api/?key=${KEY}&image_type=photo&orientation=horizontal&q=${query}&page=${page}&per_page=${perPage}`)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             if (data.hits.length === 0) {
                 showToastrInfo()
             } else {
