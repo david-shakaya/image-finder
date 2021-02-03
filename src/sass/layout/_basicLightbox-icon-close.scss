@@ -1,0 +1,12 @@
+icon close .basicLightbox:after {
+  content: '';
+  position: absolute;
+  top: 1.8rem;
+  right: 1.8rem;
+  width: 2em;
+  height: 2em;
+  background: url(https://basiclightbox.electerious.com/assets/images/close.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}

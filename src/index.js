@@ -1,4 +1,3 @@
-import './styles.css';
 import './sass/main.scss'
 import '../node_modules/basiclightbox/dist/basiclightbox.min.css'
 import refs from './js/refs'
