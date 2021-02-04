@@ -27,13 +27,10 @@ input {
   list-style: none;
 }
 /* Убираем подчеркивание в ссылках */
-.link {
+a {
   text-decoration: none;
 }
-/* Убираем наклонность текста */
-.address {
-  font-style: normal;
-}
+
 /* Убираем эффект 2рх  и оптимизируем фото */
 img {
   display: block;

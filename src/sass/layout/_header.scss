@@ -1,16 +1,32 @@
 .header {
   height: 200px;
-  background-image: url(../../images/intro.png);
+  background-image: url('https://img1.goodfon.ru/wallpaper/nbig/2/47/temnyy-fon-tekstura-buka-hd.jpg');
+  //   filter: blur(1px);
+  //   background-image: fil;
 }
-
 .developed {
   display: flex;
   justify-content: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color: rgb(73, 73, 73);
 }
 
 .header-nav-container {
   display: flex;
   justify-content: space-between;
+  margin-top: 23px;
+}
+
+.button-header {
+  border: white 1px solid;
+  padding: 6px;
+  font-size: 18px;
+  color: white;
+
+  &:hover {
+    transition: cubic-bezier(0.3, 1, 0.32, 1);
+    background-color: white;
+    color: rgb(36, 36, 36);
+  }
 }
