@@ -7,6 +7,7 @@ import debounce from 'lodash.debounce'
 import fetchHomePage from './js/fetchHomePage'
 
 
+
 const input = refs.searchForm.firstElementChild
 input.addEventListener('input', debounce(getsInputValue, 500))
 
@@ -15,6 +16,7 @@ function getsInputValue(e) {
 query = e.target.value
      if (query ==='') {
         clearDom()
+        fetchHomePage()
         return
     }
     refs.hideSpiner.classList.add('loader')
