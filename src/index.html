@@ -8,10 +8,21 @@
     <title>Image finder</title>
   </head>
     <body>
+      <header class="header container">
+        <div class="developed">
+          <span>Разработано тем то темтоа</span>
+        </div>
+        <div class="header-nav-container">
+          <a href="">ImageFinder</a>
+          <a href="">Saved pictures</a>
+        </div>
+        <div class="header-search-container">
+          <form class="search-form" id="search-form">
+            <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
+          </form>
+        </div>
+      </header>
       <div class="container">
-              <form class="search-form" id="search-form">
-                <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
-              </form>
               <section class="section-gallery">
                 <ul class="gallery"></ul>
               </section>

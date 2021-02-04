@@ -1,0 +1,16 @@
+.header {
+  height: 200px;
+  background-image: url(../../images/intro.png);
+}
+
+.developed {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.header-nav-container {
+  display: flex;
+  justify-content: space-between;
+}

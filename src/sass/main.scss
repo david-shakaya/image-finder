@@ -1,6 +1,9 @@
 @import './utils/normalize';
+@import './utils/var';
 @import './base/base';
-@import './layout/search-form.scss';
+@import './layout/container';
+@import './layout/header';
+@import './layout/search-form';
 @import './layout/spiner';
 @import './layout/img-gallery';
 @import './layout/basicLightbox-icon-close';
