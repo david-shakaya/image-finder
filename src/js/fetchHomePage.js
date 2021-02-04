@@ -12,9 +12,12 @@ export default function fetchHomePage() {
         .then(response => response.json())
         .then(data => {
             refs.galeryTitle.textContent = 'Editors Choice - Stunning images selected by our team'
+            refs.galeryTitle.classList.remove('error')
+            
             const markup = galleryHomePage(data.hits)
             refs.ulGallery.insertAdjacentHTML('beforeend', markup)
             refs.hideSpiner.classList.remove('loader')
         })
            
 }
+

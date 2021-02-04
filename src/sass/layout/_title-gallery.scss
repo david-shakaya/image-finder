@@ -1,4 +1,18 @@
 .galery-title {
+  padding: 15px;
   font-size: 26px;
   text-align: center;
+}
+.error {
+  color: red;
+}
+
+.img-wrapper-not-found {
+  background-image: url('https://icon-library.com/images/found-icon/found-icon-28.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
 }

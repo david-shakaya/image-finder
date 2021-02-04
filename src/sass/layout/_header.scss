@@ -1,8 +1,14 @@
 .header {
   height: 200px;
-  background-image: url('https://img1.goodfon.ru/wallpaper/nbig/2/47/temnyy-fon-tekstura-buka-hd.jpg');
+  background: radial-gradient(#232527, #24292e);
 }
+// #24292e
 .developed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #c2c5c7;
   display: flex;
   justify-content: center;
   padding-top: 3px;
@@ -19,12 +25,12 @@
 .button-header {
   padding: 11px;
   font-size: 18px;
-  color: white;
+  color: #c2c5c7;
 
   &:hover {
     transition: cubic-bezier(0.3, 1, 0.32, 1);
     padding: 10px;
-    border: white 1px solid;
+    border: #c2c5c7 1px solid;
     border-radius: 4px;
   }
   &:not(:last-child) {

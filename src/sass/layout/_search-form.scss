@@ -2,3 +2,17 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+.search-form input {
+  padding: 7px;
+
+  border: none;
+  border-radius: 3px;
+  background-color: #c2c5c7;
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+    outline-offset: 0;
+  }
+}

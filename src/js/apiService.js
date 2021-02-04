@@ -22,8 +22,12 @@ function fetchImages(query) {
             console.log(data)
             if (data.hits.length === 0) {
                 showToastrInfo()
+                refs.galeryTitle.textContent = 'Not found! Please specify your request.'
+                refs.galeryTitle.classList.add('error')
+                refs.wrapperNotFound.classList.add('img-wrapper-not-found')
             } else {
-                showToastrSuccess(data.totalHits)
+                refs.galeryTitle.classList.remove('error')
+                refs.galeryTitle.textContent = `${data.totalHits}images found`
             }
             
             const markup = galleryTemplate(data.hits)

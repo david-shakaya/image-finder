@@ -20,7 +20,8 @@ query = e.target.value
         return
     }
     refs.hideSpiner.classList.add('loader')
-    fetchImages(query)
+   fetchImages(query)
+   
     clearDom()
 
  }
