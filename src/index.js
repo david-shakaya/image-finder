@@ -4,6 +4,7 @@ import refs from './js/refs'
 import { fetchImages,clearDom } from './js/apiService'
 import '../node_modules/toastr/build/toastr.css';
 import debounce from 'lodash.debounce'
+import fetchHomePage from './js/fetchHomePage'
 
 
 const input = refs.searchForm.firstElementChild
@@ -21,6 +22,6 @@ query = e.target.value
     clearDom()
 
  }
-
+fetchHomePage()
 
 
