@@ -13,9 +13,9 @@
   // background-color: #c2c5c7;
 
   &:active,
-  &:hover,
   &:focus {
     outline: 0;
     outline-offset: 0;
+    border: 1px rgb(127, 81, 255) solid;
   }
 }

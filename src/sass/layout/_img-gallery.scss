@@ -18,11 +18,14 @@
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
   grid-gap: 10px;
 }
 li {
+  position: relative;
   list-style: none;
   border: 1px solid black;
+  overflow: hidden;
 }
 
 /* .photo-card {
@@ -37,3 +40,26 @@ li {
   display: flex;
   justify-content: space-evenly;
 }
+
+.box-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  background-color: rgba(32, 32, 32, 0.438);
+  cursor: pointer;
+}
+li:hover .box-overlay {
+  transform: translateX(0%);
+}
+
+// .box-overley-text {
+//   cursor: pointer;
+//   padding: 10px;
+//   border: 1px white solid;
+//   color: white;
+//   font-size: 32px;
+//   transform: translate(65%, 270%);
+// }

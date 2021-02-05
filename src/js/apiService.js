@@ -3,7 +3,6 @@ import refs from './refs.js'
 import {showToastrInfo, showToastrSuccess} from './notifications.js'
 import returnCurentImg from './basicLightbox.js'
 
-
 const clearDom = () => refs.ulGallery.innerHTML = ''
 
 const KEY = '14396786-a714bdf8d854f524afdc45598';

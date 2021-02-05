@@ -11,6 +11,7 @@ export default function fetchHomePage() {
     fetch(`https://pixabay.com/api/?key=${KEY}&image_type=photo&orientation=horizontal&page=${page}&per_page=${perPage}&editors_choice=true`)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             refs.galeryTitle.textContent = 'Editors Choice - Stunning images selected by our team'
             refs.galeryTitle.classList.remove('error')
             
