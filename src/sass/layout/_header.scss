@@ -1,6 +1,12 @@
 .header {
+  background-image: linear-gradient(
+      to left,
+      rgba(-139, 0, 4, 0.76),
+      rgba(24, 24, 26, 0.96)
+    ),
+    url('../images/hero.jpg');
   height: 200px;
-  background: radial-gradient(#232527, #24292e);
+  // background: radial-gradient(#232527, #24292e);
 }
 // #24292e
 .developed {

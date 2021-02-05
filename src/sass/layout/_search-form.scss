@@ -3,11 +3,14 @@
   margin-top: 20px;
 }
 .search-form input {
+  color: #c2c5c7;
+  max-width: 320px;
   padding: 7px;
-
+  background: none;
   border: none;
+  border: 1px white solid;
   border-radius: 3px;
-  background-color: #c2c5c7;
+  // background-color: #c2c5c7;
 
   &:active,
   &:hover,
