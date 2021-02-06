@@ -8,6 +8,7 @@ import fetchHomePage from './js/fetchHomePage'
 
 
 
+
 const input = refs.searchForm.firstElementChild
 input.addEventListener('input', debounce(getsInputValue, 500))
 
@@ -24,9 +25,6 @@ query = e.target.value
    fetchImages(query)
     clearDom()
 }
-
-if (!input.nodeValue) {
    fetchHomePage()    
- }
 
 

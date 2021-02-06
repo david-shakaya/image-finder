@@ -18,7 +18,8 @@ function fetchImages(query) {
     fetch(`https://pixabay.com/api/?key=${KEY}&image_type=photo&orientation=horizontal&q=${query}&page=${page}&per_page=${perPage}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            const paginationContainer = document.querySelector('#pagination-container');
+            paginationContainer.innerHTML = ''
             if (data.hits.length === 0) {
                 showToastrInfo()
                 refs.galeryTitle.textContent = 'Not found! Please specify your request.'
@@ -71,5 +72,5 @@ function fetchImagesNextPages(e) {
         refs.hideSpiner.classList.remove('loader')
 }
 
-export  { fetchImages,clearDom }
+export  { fetchImages,clearDom, fetchImagesNextPages }
 

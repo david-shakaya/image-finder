@@ -1,6 +1,8 @@
 // editors_choice
 import refs from './refs'
 import galleryHomePage from '../templates/gallery-template-home-page.hbs'
+import savesToLocalStorage from './saves-to-local-storage'
+
 
 let page = 1
 
@@ -12,14 +14,14 @@ function getFetch(page) {
 
 export default function fetchHomePage() {
     page = 1
-   getFetch().then(data => {
-            console.log(data);
-            refs.galeryTitle.textContent = 'Editors Choice - Stunning images selected by our team'
+    getFetch().then(data => {
+            refs.galeryTitle.textContent = 'The best photos according to the editors.'
             refs.galeryTitle.classList.remove('error')
             
             const markup = galleryHomePage(data.hits)
-            refs.ulGallery.insertAdjacentHTML('beforeend', markup)
-            refs.hideSpiner.classList.remove('loader')
+        refs.ulGallery.insertAdjacentHTML('beforeend', markup)
+        refs.hideSpiner.classList.remove('loader')
+        savesToLocalStorage()
 
 
 
@@ -28,8 +30,6 @@ export default function fetchHomePage() {
     var perPages = 15;
 
     items.slice(perPages).hide();
-
-       console.log(window.location.href);
        
     $('#pagination-container').pagination({
         items: `${data.totalHits}`,
@@ -41,7 +41,8 @@ export default function fetchHomePage() {
         onPageClick: function (pageNumber) {
             getFetch(pageNumber).then(data => {
             const markup = galleryHomePage(data.hits)
-            refs.ulGallery.innerHTML =  markup
+                refs.ulGallery.innerHTML = markup
+                 savesToLocalStorage()
             })
         }
     });
