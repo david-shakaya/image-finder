@@ -10,7 +10,6 @@ function getFetch(page) {
        .then(response => response.json())
 }
 
-
 export default function fetchHomePage() {
     page = 1
    getFetch().then(data => {
@@ -35,8 +34,10 @@ export default function fetchHomePage() {
     $('#pagination-container').pagination({
         items: `${data.totalHits}`,
         itemsOnPage: perPages,
+        edges: 1,
         prevText: "&laquo;",
         nextText: "&raquo;",
+         cssStyle: 'light-theme',
         onPageClick: function (pageNumber) {
             getFetch(pageNumber).then(data => {
             const markup = galleryHomePage(data.hits)
