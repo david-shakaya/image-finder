@@ -60,7 +60,6 @@ function fetchImagesNextPages(e) {
                 if (data.hits.length <= 11) {
                     isEndPage = true
                 }
-               
                 refs.hideSpiner.classList.add('loader')
                 const markupNextPage = galleryTemplate(data.hits)
                 refs.ulGallery.insertAdjacentHTML('beforeend', markupNextPage)

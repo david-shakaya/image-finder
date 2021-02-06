@@ -16,15 +16,17 @@ function getsInputValue(e) {
 query = e.target.value
      if (query ==='') {
         clearDom()
+        input.removeEventListener('input', debounce(getsInputValue, 500))
         fetchHomePage()
         return
     }
     refs.hideSpiner.classList.add('loader')
    fetchImages(query)
-   
     clearDom()
+}
 
+if (!input.nodeValue) {
+   fetchHomePage()    
  }
-fetchHomePage()
 
 
