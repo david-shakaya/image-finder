@@ -26,7 +26,8 @@ function fetchImages(query) {
                 refs.wrapperNotFound.classList.add('img-wrapper-not-found')
             } else {
                 refs.galeryTitle.classList.remove('error')
-                refs.galeryTitle.textContent = `${data.totalHits}images found`
+                refs.galeryTitle.textContent = `${data.totalHits} images found`
+                refs.wrapperNotFound.classList.remove('img-wrapper-not-found')
             }
             
             const markup = galleryTemplate(data.hits)
