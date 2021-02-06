@@ -15,6 +15,7 @@ function getFetch(page) {
 export default function fetchHomePage() {
     page = 1
     getFetch().then(data => {
+        console.log(data);
             refs.galeryTitle.textContent = 'The best photos according to the editors.'
             refs.galeryTitle.classList.remove('error')
             

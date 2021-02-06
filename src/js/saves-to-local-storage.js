@@ -8,6 +8,17 @@ export default function savesToLocalStorage() {
     })
 }
 
+
+
 function savesOnClick(e) {
-    console.log(e.target.dataset);
+    let urlImg = e.target.dataset.imgSaved 
+    let idImg = e.target.dataset.imgId
+
+localStorage.setItem(`${idImg}`,`${urlImg}`);
+
+
 }
+
+
+
+
