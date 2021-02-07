@@ -20,13 +20,14 @@ query = e.target.value
          activePages.isActiveHomePage = false
         clearDom()
         input.removeEventListener('input', debounce(getsInputValue, 500))
-        fetchHomePage()
+         fetchHomePage()
+         refs.hideSpiner.classList.remove('loader')
         return
     }
     refs.hideSpiner.classList.add('loader')
    fetchImages(query)
     clearDom()
 }
-   fetchHomePage()    
-
+   fetchHomePage() 
+               
 

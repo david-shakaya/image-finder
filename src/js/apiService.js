@@ -5,23 +5,28 @@ import returnCurentImg from './basicLightbox.js'
 
 const clearDom = () => refs.ulGallery.innerHTML = ''
 
-const KEY = '14396786-a714bdf8d854f524afdc45598';
-const perPage = 12
+function fetchQuery(query, page) {
+    return fetch(`https://pixabay.com/api/?key=14396786-a714bdf8d854f524afdc45598&image_type=photo&orientation=horizontal&q=${query}&page=${page}&per_page=15`)
+        .then(response => {
+            refs.hideSpiner.classList.add('loader')
+         return   response.json()
+        })
+}
+
 let page = 1
-let queryForPageTwo = ''
-let isEndPage = false
+let queryForPageOne = ""
 
 function fetchImages(query) {
-    queryForPageTwo = query
+
+    // queryForPageTwo = query
+    queryForPageOne =query
     page = 1
-    isEndPage = false
-    fetch(`https://pixabay.com/api/?key=${KEY}&image_type=photo&orientation=horizontal&q=${query}&page=${page}&per_page=${perPage}`)
-        .then(response => response.json())
-        .then(data => {
-            const paginationContainer = document.querySelector('#pagination-container');
-            paginationContainer.innerHTML = ''
-            if (data.hits.length === 0) {
-                showToastrInfo()
+    fetchQuery(queryForPageOne).then(data => {
+       refs.hideSpiner.classList.remove('loader')
+        const paginationContainer = document.querySelector('#pagination-container');
+        
+        paginationContainer.innerHTML = ''
+        if (data.hits.length === 0) {
                 refs.galeryTitle.textContent = 'Not found! Please specify your request.'
                 refs.galeryTitle.classList.add('error')
                 refs.wrapperNotFound.classList.add('img-wrapper-not-found')
@@ -29,48 +34,70 @@ function fetchImages(query) {
                 refs.galeryTitle.classList.remove('error')
                 refs.galeryTitle.textContent = `${data.totalHits} images found`
                 refs.wrapperNotFound.classList.remove('img-wrapper-not-found')
+
             }
-            
-            const markup = galleryTemplate(data.hits)
+               const markup = galleryTemplate(data.hits)
             refs.ulGallery.insertAdjacentHTML('beforeend', markup)
-            refs.hideSpiner.classList.remove('loader')
 
             const gallery = document.querySelector('.gallery');
             gallery.addEventListener('click', returnCurentImg)
-
-            if (data.hits.length <= 11) {
-                isEndPage = true
-                console.log('Верхний меньше 11');
-                }
+            pagination(data)
         })
-    window.addEventListener('scroll', fetchImagesNextPages)
+    // window.addEventListener('scroll', fetchImagesNextPages)
 }
+
+function pagination(data) {
+    var items = $(".list-wrapper .list-item");
+    var numItems = items.length;
+    var perPages = 15;
+
+    items.slice(perPages).hide();
+       
+    $('#pagination-container').pagination({
+        items: `${data.totalHits}`,
+        itemsOnPage: perPages,
+        edges: 1,
+        prevText: "&laquo;",
+        nextText: "&raquo;",
+         cssStyle: 'light-theme',
+        onPageClick: function (pageNumber) {
+            fetchQuery(queryForPageOne, pageNumber).then(data => {
+                refs.hideSpiner.classList.remove('loader')
+                const markup = galleryTemplate(data.hits)
+                refs.ulGallery.innerHTML = markup
+                //  savesToLocalStorage()
+            })
+        }
+    });
+}
+
+
 // Scroll Event
 
-function fetchImagesNextPages(e) {
-    if (isEndPage) {
-        refs.hideSpiner.classList.remove('loader')
-        return
-    }
-    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
-    if (scrollTop + clientHeight > scrollHeight - 1) {
-        page += 1
-        fetch(`https://pixabay.com/api/?key=${KEY}&image_type=photo&orientation=horizontal&q=${queryForPageTwo}&page=${page}&per_page=${perPage}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.hits.length <= 11) {
-                    isEndPage = true
-                }
-                refs.hideSpiner.classList.add('loader')
-                const markupNextPage = galleryTemplate(data.hits)
-                refs.ulGallery.insertAdjacentHTML('beforeend', markupNextPage)
-                const gallery = document.querySelector('.gallery');
-                console.log(gallery);
-                gallery.addEventListener('click', returnCurentImg)
-            })
-    }
-        refs.hideSpiner.classList.remove('loader')
-}
+// function fetchImagesNextPages(e) {
+//     if (isEndPage) {
+//         refs.hideSpiner.classList.remove('loader')
+//         return
+//     }
+//     const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
+//     if (scrollTop + clientHeight > scrollHeight - 1) {
+//         page += 1
+//         fetch(`https://pixabay.com/api/?key=${KEY}&image_type=photo&orientation=horizontal&q=${queryForPageTwo}&page=${page}&per_page=${perPage}`)
+//             .then(response => response.json())
+//             .then(data => {
+//                 if (data.hits.length <= 11) {
+//                     isEndPage = true
+//                 }
+//                 refs.hideSpiner.classList.add('loader')
+//                 const markupNextPage = galleryTemplate(data.hits)
+//                 refs.ulGallery.insertAdjacentHTML('beforeend', markupNextPage)
+//                 const gallery = document.querySelector('.gallery');
+//                 console.log(gallery);
+//                 gallery.addEventListener('click', returnCurentImg)
+//             })
+//     }
+//         refs.hideSpiner.classList.remove('loader')
+// }
 
-export  { fetchImages,clearDom, fetchImagesNextPages }
+export  { fetchImages,clearDom, /* fetchImagesNextPages */ }
 

@@ -1,6 +1,7 @@
 import refs from './refs'
 import activePages from './activePages'
 
+refs.hideSpiner.classList.remove('loader')
 refs.buttonHeaderSave.addEventListener('click', renderPageOnClick)
 
 function renderPageOnClick(e) {

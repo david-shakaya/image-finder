@@ -4,8 +4,6 @@ import galleryHomePage from '../templates/gallery-template-home-page.hbs'
 import savesToLocalStorage from './saves-to-local-storage'
 import activePage from './activePages'
 
-
-
 let page = 1
 
 function getFetch(page) {
@@ -21,11 +19,12 @@ export default function fetchHomePage(e) {
         e.preventDefault()
         return
     }
+    refs.hideSpiner.classList.add('loader')
     console.dir(window.document);
     activePage.isActiveHomePage = true
     page = 1
     getFetch().then(data => {
-        console.log(data);
+        refs.hideSpiner.classList.remove('loader')
             refs.galeryTitle.textContent = 'The best photos according to the editors.'
             refs.galeryTitle.classList.remove('error')
             
