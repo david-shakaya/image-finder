@@ -25,9 +25,19 @@ query = e.target.value
         return
     }
     refs.hideSpiner.classList.add('loader')
-   fetchImages(query)
+    fetchImages(query)
     clearDom()
-}
-   fetchHomePage() 
-               
 
+    if (!activePages.isActiveHomePage) {
+        refs.buttonHeaderHome.addEventListener('click', refetchHomePageOnClick)
+    }
+}
+
+function refetchHomePageOnClick() {
+    refs.buttonHeaderHome.removeEventListener('click', refetchHomePageOnClick)
+    clearDom()
+    fetchHomePage()
+    activePages.isActiveHomePage = true
+}
+
+fetchHomePage() 

@@ -2,6 +2,7 @@ import galleryTemplate from '../templates/gallery-template.hbs';
 import refs from './refs.js'
 import {showToastrInfo, showToastrSuccess} from './notifications.js'
 import returnCurentImg from './basicLightbox.js'
+import activePage from './activePages'
 
 const clearDom = () => refs.ulGallery.innerHTML = ''
 
@@ -17,8 +18,9 @@ let page = 1
 let queryForPageOne = ""
 
 function fetchImages(query) {
+    activePage.isActiveHomePage = false
+    console.log(activePage.isActiveHomePage );
 
-    // queryForPageTwo = query
     queryForPageOne =query
     page = 1
     fetchQuery(queryForPageOne).then(data => {

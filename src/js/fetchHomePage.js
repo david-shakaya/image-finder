@@ -14,20 +14,27 @@ function getFetch(page) {
 
 refs.buttonHeaderHome.addEventListener('click', fetchHomePage)
 
+    // if (activePage.isActiveSearchPage) {
+    //     activePages.isActiveHomePage = false
+    //     fetchHomePage()
+    // }
+
 export default function fetchHomePage(e) {
     if (activePage.isActiveHomePage) {
         e.preventDefault()
         return
     }
+
+    const input = refs.searchForm.firstElementChild
+    input.value = ''
+
     refs.hideSpiner.classList.add('loader')
-    console.dir(window.document);
     activePage.isActiveHomePage = true
     page = 1
     getFetch().then(data => {
         refs.hideSpiner.classList.remove('loader')
-            refs.galeryTitle.textContent = 'The best photos according to the editors.'
-            refs.galeryTitle.classList.remove('error')
-            
+        refs.galeryTitle.textContent = 'The best photos according to the editors.'
+        refs.galeryTitle.classList.remove('error')
             const markup = galleryHomePage(data.hits)
         refs.ulGallery.insertAdjacentHTML('beforeend', markup)
         refs.hideSpiner.classList.remove('loader')
@@ -60,7 +67,8 @@ function pagination(data) {
             getFetch(pageNumber).then(data => {
             const markup = galleryHomePage(data.hits)
                 refs.ulGallery.innerHTML = markup
-                 savesToLocalStorage()
+                savesToLocalStorage()
+                activePage.isActiveHomePage = true
             })
         }
     });
