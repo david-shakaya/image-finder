@@ -14,13 +14,10 @@ function getFetch(page) {
 
 refs.buttonHeaderHome.addEventListener('click', fetchHomePage)
 
-    // if (activePage.isActiveSearchPage) {
-    //     activePages.isActiveHomePage = false
-    //     fetchHomePage()
-    // }
 
 export default function fetchHomePage(e) {
-    if (activePage.isActiveHomePage) {
+    try{
+       if (activePage.isActiveHomePage) {
         e.preventDefault()
         return
     }
@@ -43,7 +40,10 @@ export default function fetchHomePage(e) {
         pagination(data)
        })
            e.preventDefault()
-    
+      
+    } catch (err) {
+        
+   }
 }
 
 
