@@ -5,7 +5,8 @@ import { fetchImages,clearDom } from './js/apiService'
 import '../node_modules/toastr/build/toastr.css';
 import debounce from 'lodash.debounce'
 import fetchHomePage from './js/fetchHomePage'
-
+import './js/render-saves-picture-page'
+import activePages from './js/activePages'
 
 
 
@@ -16,6 +17,7 @@ let query = ''
 function getsInputValue(e) {
 query = e.target.value
      if (query ==='') {
+         activePages.isActiveHomePage = false
         clearDom()
         input.removeEventListener('input', debounce(getsInputValue, 500))
         fetchHomePage()

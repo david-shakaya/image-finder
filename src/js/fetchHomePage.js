@@ -2,6 +2,8 @@
 import refs from './refs'
 import galleryHomePage from '../templates/gallery-template-home-page.hbs'
 import savesToLocalStorage from './saves-to-local-storage'
+import activePage from './activePages'
+
 
 
 let page = 1
@@ -12,7 +14,15 @@ function getFetch(page) {
        .then(response => response.json())
 }
 
-export default function fetchHomePage() {
+refs.buttonHeaderHome.addEventListener('click', fetchHomePage)
+
+export default function fetchHomePage(e) {
+    if (activePage.isActiveHomePage) {
+        e.preventDefault()
+        return
+    }
+    console.dir(window.document);
+    activePage.isActiveHomePage = true
     page = 1
     getFetch().then(data => {
         console.log(data);
@@ -24,9 +34,17 @@ export default function fetchHomePage() {
         refs.hideSpiner.classList.remove('loader')
         savesToLocalStorage()
 
+        pagination(data)
+       })
+           e.preventDefault()
+    
+}
 
 
-    var items = $(".list-wrapper .list-item");
+
+
+function pagination(data) {
+      var items = $(".list-wrapper .list-item");
     var numItems = items.length;
     var perPages = 15;
 
@@ -47,10 +65,6 @@ export default function fetchHomePage() {
             })
         }
     });
-       })
-           
 }
 
-
-
-
+export {activePage}
