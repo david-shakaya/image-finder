@@ -8,7 +8,7 @@
   height: 200px;
   // background: radial-gradient(#232527, #24292e);
 }
-// #24292e
+
 .developed {
   position: fixed;
   bottom: 0;
@@ -25,7 +25,8 @@
 .header-nav-container {
   display: flex;
   justify-content: space-between;
-  padding: 30px;
+  align-items: center;
+  padding-top: 13px;
 }
 
 .button-header {

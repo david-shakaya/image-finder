@@ -17,11 +17,12 @@ let query = ''
 function getsInputValue(e) {
 query = e.target.value
      if (query ==='') {
-         activePages.isActiveHomePage = false
+        activePages.isActiveHomePage = false
         clearDom()
         input.removeEventListener('input', debounce(getsInputValue, 500))
          fetchHomePage()
          refs.hideSpiner.classList.remove('loader')
+         refs.buttonHeaderHome.removeEventListener('click', refetchHomePageOnClick)
         return
     }
     refs.hideSpiner.classList.add('loader')
