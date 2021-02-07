@@ -1,6 +1,6 @@
 import refs from './refs'
 
-
+const qwe = []
 
 export default function savesToLocalStorage() {
     refs.boxOverlayLocalStor().forEach(el => {
@@ -11,10 +11,22 @@ export default function savesToLocalStorage() {
 function savesOnClick(e) {
   let urlImg = e.target.dataset.imgSaved 
   let idImg = e.target.dataset.imgId
-  
-  { `${saveStorage('url', urlImg)}` }
+
+
+  qwe.push({url:urlImg })
+  localStorage.setItem('qwe', JSON.stringify(qwe));
+  const getFromLocal = localStorage.getItem('qwe')
+  const parsedSettings = JSON.parse(getFromLocal);
   
 }
+parsedSettings.forEach(el => {
+    console.log(el);
+  })
+
+  
+// console.log(parsedSettings);
+
+
 
 const saveStorage = (key, value) => {
   try {
