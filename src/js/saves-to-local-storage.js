@@ -8,12 +8,11 @@ export default function savesToLocalStorage() {
     })
 }
 
-
 function savesOnClick(e) {
   let urlImg = e.target.dataset.imgSaved 
   let idImg = e.target.dataset.imgId
   
-  saveStorage(idImg, urlImg)
+  { `${saveStorage('url', urlImg)}` }
   
 }
 
@@ -37,5 +36,5 @@ const saveStorage = (key, value) => {
 };
 
 
-
+export { loadStorage }
 
