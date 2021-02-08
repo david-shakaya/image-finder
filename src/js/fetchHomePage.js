@@ -66,9 +66,10 @@ function pagination(data) {
         onPageClick: function (pageNumber) {
             getFetch(pageNumber).then(data => {
             const markup = galleryHomePage(data.hits)
-            refs.ulGallery.innerHTML = markup
+                refs.ulGallery.innerHTML = markup
                 savesToLocalStorage()
                 loadFromLocalStorage()
+                
                
                 activePage.isActiveHomePage = true
             })

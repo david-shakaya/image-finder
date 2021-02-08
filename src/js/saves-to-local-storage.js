@@ -9,8 +9,8 @@ let pars;
 
 function savesOnClick(e) {
   if (e.target.className === 'box-overlay') {
-    // e.classList ='cls'
-    // e.dataset = 's'
+    console.log(e.target.className);
+
     let idImg = e.target.dataset.imgId
 
     console.log(idImg);
@@ -22,9 +22,9 @@ function savesOnClick(e) {
     sesion.push({ url: urlImg, id: idImg,isVisible:dataInvis })
     console.log(sesion);
   localStorage.setItem(`sesion`, JSON.stringify(sesion)); 
+  e.target.classList.add('addedToSaved')
   }
   
-  e.target.classList.add('addedToSaved')
 
 }
 
@@ -37,9 +37,7 @@ if (getFromLocal) {
         elFromLocal.classList.add('addedToSaved')
         // console.log(el.id);
     })
-    // const sq = parsedSettings[0].id
-    // const el = document.querySelector(`#${sq}`);
-    // console.log(el);
+
 }
  }
 
