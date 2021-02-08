@@ -3,6 +3,7 @@ import refs from './refs.js'
 import {showToastrInfo, showToastrSuccess} from './notifications.js'
 import returnCurentImg from './basicLightbox.js'
 import activePage from './activePages'
+import {savesToLocalStorage, loadFromLocalStorage} from './saves-to-local-storage.js'
 
 const clearDom = () => refs.ulGallery.innerHTML = ''
 
@@ -39,11 +40,12 @@ function fetchImages(query) {
 
             }
                const markup = galleryTemplate(data.hits)
-            refs.ulGallery.insertAdjacentHTML('beforeend', markup)
-
+        refs.ulGallery.insertAdjacentHTML('beforeend', markup)
             const gallery = document.querySelector('.gallery');
-            gallery.addEventListener('click', returnCurentImg)
-            pagination(data)
+        gallery.addEventListener('click', returnCurentImg)
+        pagination(data)
+        savesToLocalStorage()
+loadFromLocalStorage()
         })
     // window.addEventListener('scroll', fetchImagesNextPages)
 }
@@ -68,6 +70,8 @@ function pagination(data) {
                 const markup = galleryTemplate(data.hits)
                 refs.ulGallery.innerHTML = markup
                 //  savesToLocalStorage()
+                        savesToLocalStorage()
+        loadFromLocalStorage()
             })
         }
     });

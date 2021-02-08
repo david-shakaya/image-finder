@@ -1,8 +1,9 @@
 import refs from './refs'
 const sesion = []
 
+
  function savesToLocalStorage() {
-    document.addEventListener('click', savesOnClick)
+    window.document.addEventListener('click', savesOnClick)
 }
 
 let pars;
@@ -16,10 +17,20 @@ function savesOnClick(e) {
     console.log(idImg);
 
   const dataInvis =  e.target.dataset.added = 'invisible'
-   
+    let urlImg = e.target.dataset.imgSaved
     
-  let urlImg = e.target.dataset.imgSaved
-    sesion.push({ url: urlImg, id: idImg,isVisible:dataInvis })
+
+
+// если в хран чтото есть перебираем и пушим.      
+    if (sesion.length > 0) {
+      sesion.map(el => {
+        if (el.id !== idImg) {
+          sesion.push({ url: urlImg, id: idImg,isVisible:dataInvis })
+        }
+      })
+    } else {
+      sesion.push({ url: urlImg, id: idImg,isVisible:dataInvis })
+    }
     console.log(sesion);
   localStorage.setItem(`sesion`, JSON.stringify(sesion)); 
   e.target.classList.add('addedToSaved')
@@ -30,8 +41,13 @@ function savesOnClick(e) {
 
 function loadFromLocalStorage() {
     const getFromLocal = localStorage.getItem('sesion')
-if (getFromLocal) {
-  const parsedSettings = JSON.parse(getFromLocal);
+  try {
+    if (getFromLocal) {
+      const parsedSettings = JSON.parse(getFromLocal);
+       parsedSettings.find(el => {
+        sesion.push(el)
+      })
+
     parsedSettings.map(el => {
         const elFromLocal = document.querySelector(`#${el.id}`);
         elFromLocal.classList.add('addedToSaved')
@@ -39,6 +55,7 @@ if (getFromLocal) {
     })
 
 }
+}catch{}
  }
 
 // parsedSettings.forEach(el => {
