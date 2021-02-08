@@ -5,6 +5,8 @@ import {savesToLocalStorage, loadFromLocalStorage} from './saves-to-local-storag
 import activePage from './activePages'
 
 savesToLocalStorage()
+
+/*   НУЖНО СНИМАТЬ СЛУШАТЕЛИ С ВИНДОВ И ДОЛЖНО ЗАРАБОТАТЬ*/
 // loadFromLocalStorage()
 let page = 1
 
