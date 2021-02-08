@@ -1,26 +1,50 @@
 import refs from './refs'
+const sesion = []
 
-const qwe = []
-
-export default function savesToLocalStorage() {
-    refs.boxOverlayLocalStor().forEach(el => {
-      el.addEventListener('click', savesOnClick)  
-    })
+ function savesToLocalStorage() {
+    document.addEventListener('click', savesOnClick)
 }
+
+let pars;
 
 function savesOnClick(e) {
-  let urlImg = e.target.dataset.imgSaved 
-  let idImg = e.target.dataset.imgId
+  if (e.target.className === 'box-overlay') {
+    // e.classList ='cls'
+    // e.dataset = 's'
+    let idImg = e.target.dataset.imgId
 
+    console.log(idImg);
 
-  // qwe.push({url:urlImg })
-  // localStorage.setItem('qwe', JSON.stringify(qwe));
-  // const getFromLocal = localStorage.getItem('qwe')
-  // const parsedSettings = JSON.parse(getFromLocal);
+  const dataInvis =  e.target.dataset.added = 'invisible'
+   
+    
+  let urlImg = e.target.dataset.imgSaved
+    sesion.push({ url: urlImg, id: idImg,isVisible:dataInvis })
+    console.log(sesion);
+  localStorage.setItem(`sesion`, JSON.stringify(sesion)); 
+  }
   
+  e.target.classList.add('addedToSaved')
+
 }
+
+function loadFromLocalStorage() {
+    const getFromLocal = localStorage.getItem('sesion')
+if (getFromLocal) {
+  const parsedSettings = JSON.parse(getFromLocal);
+    parsedSettings.map(el => {
+        const elFromLocal = document.querySelector(`#${el.id}`);
+        elFromLocal.classList.add('addedToSaved')
+        // console.log(el.id);
+    })
+    // const sq = parsedSettings[0].id
+    // const el = document.querySelector(`#${sq}`);
+    // console.log(el);
+}
+ }
+
 // parsedSettings.forEach(el => {
-//     console.log(el);
+//     console.log(el.url);
 //   })
 
   
@@ -47,6 +71,4 @@ function savesOnClick(e) {
 //   }
 // };
 
-
-// export { loadStorage }
-
+export {savesToLocalStorage,loadFromLocalStorage}

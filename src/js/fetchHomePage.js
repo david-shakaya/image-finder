@@ -1,8 +1,10 @@
 // editors_choice
 import refs from './refs'
 import galleryHomePage from '../templates/gallery-template-home-page.hbs'
-import savesToLocalStorage from './saves-to-local-storage'
+import {savesToLocalStorage, loadFromLocalStorage} from './saves-to-local-storage.js'
 import activePage from './activePages'
+
+
 
 let page = 1
 
@@ -36,6 +38,7 @@ export default function fetchHomePage(e) {
         refs.ulGallery.insertAdjacentHTML('beforeend', markup)
         refs.hideSpiner.classList.remove('loader')
         savesToLocalStorage()
+      loadFromLocalStorage()
 
         pagination(data)
        })
@@ -45,9 +48,6 @@ export default function fetchHomePage(e) {
         
    }
 }
-
-
-
 
 function pagination(data) {
       var items = $(".list-wrapper .list-item");
@@ -66,8 +66,10 @@ function pagination(data) {
         onPageClick: function (pageNumber) {
             getFetch(pageNumber).then(data => {
             const markup = galleryHomePage(data.hits)
-                refs.ulGallery.innerHTML = markup
+            refs.ulGallery.innerHTML = markup
                 savesToLocalStorage()
+                loadFromLocalStorage()
+               
                 activePage.isActiveHomePage = true
             })
         }
