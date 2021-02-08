@@ -4,7 +4,7 @@ import galleryHomePage from '../templates/gallery-template-home-page.hbs'
 import {savesToLocalStorage, loadFromLocalStorage} from './saves-to-local-storage.js'
 import activePage from './activePages'
 
-savesToLocalStorage()
+
 
 /*   НУЖНО СНИМАТЬ СЛУШАТЕЛИ С ВИНДОВ И ДОЛЖНО ЗАРАБОТАТЬ*/
 // loadFromLocalStorage()
@@ -42,7 +42,7 @@ export default function fetchHomePage(e) {
         refs.hideSpiner.classList.remove('loader')
         
         pagination(data)
-   
+        savesToLocalStorage()
         loadFromLocalStorage()
        })
            e.preventDefault()

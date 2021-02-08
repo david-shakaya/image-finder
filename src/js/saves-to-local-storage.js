@@ -6,7 +6,7 @@ const sesion = []
     window.document.addEventListener('click', savesOnClick)
 }
 
-let pars;
+let pars = 0;
 
 function savesOnClick(e) {
   if (e.target.className === 'box-overlay') {
@@ -20,15 +20,17 @@ function savesOnClick(e) {
     let urlImg = e.target.dataset.imgSaved
     
 
-
 // если в хран чтото есть перебираем и пушим.      
     if (sesion.length > 0) {
-      sesion.map(el => {
+      sesion.find(el => {
         if (el.id !== idImg) {
-          sesion.push({ url: urlImg, id: idImg,isVisible:dataInvis })
+          console.log(idImg);
+          sesion.push({ url: urlImg, id: idImg, isVisible: dataInvis })
+          console.log('ТУТ ПРОБЛЕМА');
         }
       })
     } else {
+      console.log('sdss');
       sesion.push({ url: urlImg, id: idImg,isVisible:dataInvis })
     }
     console.log(sesion);
