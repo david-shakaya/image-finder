@@ -38,7 +38,7 @@ export default function fetchHomePage(e) {
         refs.galeryTitle.textContent = 'The best photos according to the editors.'
         refs.galeryTitle.classList.remove('error')
             const markup = galleryHomePage(data.hits)
-        refs.ulGallery.insertAdjacentHTML('beforeend', markup)
+        refs.ulGallery.innerHTML = markup
         refs.hideSpiner.classList.remove('loader')
         
         pagination(data)

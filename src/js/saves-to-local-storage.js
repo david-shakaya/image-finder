@@ -83,9 +83,6 @@ function loadFromLocalStorage() {
         // console.log(elFromLocal);
         elFromLocal.classList.add('addedToSaved')
         elFromLocal.textContent ='added'
-        
-
-        
         // console.log(el.id);
       })
       

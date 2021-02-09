@@ -16,9 +16,9 @@ refs.buttonHeaderSave.addEventListener('click', renderPageOnClick)
 
 function renderPageOnClick(e) {
     e.preventDefault()
+     refs.ulGallery.innerHTML = ''
     loadFromLocalStorage()
     const addedToSaved = document.querySelectorAll('.box-overlay ');
-
     const getFromLocal = localStorage.getItem('sesion')
     if (getFromLocal) {
         const parsedSettings = JSON.parse(getFromLocal);
@@ -27,7 +27,7 @@ function renderPageOnClick(e) {
         parsedSettings.forEach(el => sevedPicture.push({ url: el.url, id: el.id }))
     }
     activePages.isActiveHomePage = false
-    refs.ulGallery.innerHTML = ''
+   
     refs.paginationWrapper.innerHTML = ''
     refs.galeryTitle.textContent = 'Your saved photos'
     const markup = savedPictures(sevedPicture)
