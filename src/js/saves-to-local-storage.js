@@ -19,23 +19,32 @@ function savesOnClick(e) {
   const dataInvis =  e.target.dataset.added = 'invisible'
     let urlImg = e.target.dataset.imgSaved
     
+let isActive = 0
 
 // если в хран чтото есть перебираем и пушим.      
     if (sesion.length > 0) {
-      sesion.find(el => {
+     
+       
+        sesion.find(el => {
         if (el.id !== idImg) {
-          console.log(idImg);
+          // console.log(idImg);
+          if (isActive === 1) {
+            return
+          }
           sesion.push({ url: urlImg, id: idImg, isVisible: dataInvis })
-          console.log('ТУТ ПРОБЛЕМА');
+          isActive+=1
+          // console.log('ТУТ ПРОБЛЕМА');
         }
       })
+    
     } else {
       console.log('sdss');
       sesion.push({ url: urlImg, id: idImg,isVisible:dataInvis })
     }
     console.log(sesion);
   localStorage.setItem(`sesion`, JSON.stringify(sesion)); 
-  e.target.classList.add('addedToSaved')
+    e.target.classList.add('addedToSaved')
+    isActive =0
   }
   
 
@@ -46,12 +55,29 @@ function loadFromLocalStorage() {
   try {
     if (getFromLocal) {
       const parsedSettings = JSON.parse(getFromLocal);
-       parsedSettings.find(el => {
+
+
+      const length = parsedSettings.length
+      console.log(sesion.length);
+      console.log(parsedSettings.length);
+      parsedSettings.find(el => {
+
+        if (sesion.length === length) {
+          return
+        }
         sesion.push(el)
+        // Когда загружаем обрезать сесион.ленгт 
+        // console.log(el);
+        // console.log(sesion);
       })
 
-    parsedSettings.map(el => {
-        const elFromLocal = document.querySelector(`#${el.id}`);
+      parsedSettings.map(el => {
+
+        let elFromLocal = document.querySelector(`#${el.id}`);
+        if (elFromLocal === null) {
+          elFromLocal =document.querySelector(`.git-logo`); 
+        }
+        console.log(elFromLocal);
         elFromLocal.classList.add('addedToSaved')
         // console.log(el.id);
     })
