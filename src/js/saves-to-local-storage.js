@@ -77,7 +77,7 @@ function loadFromLocalStorage() {
         if (elFromLocal === null) {
           elFromLocal =document.querySelector(`.git-logo`); 
         }
-        console.log(elFromLocal);
+        // console.log(elFromLocal);
         elFromLocal.classList.add('addedToSaved')
         // console.log(el.id);
     })

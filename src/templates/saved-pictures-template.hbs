@@ -1,11 +1,11 @@
 {{#each this}}
 <li class="list-item-gallery list-item">
-    <span class="box-overlay" id="id{{this.id}}" data-img-saved="{{this.largeImageURL}}" data-img-id="id{{this.id}}"
+    {{!-- <span class="box-overlay" id="id{{this.id}}" data-img-saved="{{}}" data-img-id="id{{this.id}}"
         data-added="visible">
         add to saved
-    </span>
+    </span> --}}
     <div class=" photo-card">
-        <img src="{{this.webformatURL}}" alt="" data-large-img="{{this.largeImageURL}}" />
+        <img src="{{url}}" alt="" />
     </div>
     </div>
 </li>
