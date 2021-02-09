@@ -26,10 +26,6 @@ function renderPageOnClick(e) {
 
         parsedSettings.forEach(el => sevedPicture.push({ url: el.url, id: el.id }))
     }
-
-
-    
-
     activePages.isActiveHomePage = false
     refs.ulGallery.innerHTML = ''
     refs.paginationWrapper.innerHTML = ''

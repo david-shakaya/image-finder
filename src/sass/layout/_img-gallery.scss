@@ -43,25 +43,25 @@ li {
 
 .box-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 5px;
+  right: 0;
   width: 35%;
   height: 11%;
-  transform: translateX(-100%);
-  background-color: rgba(30, 29, 90, 0.644);
+  color: white;
+  text-align: center;
+  background-color: rgba(27, 26, 92, 0.952);
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 li:hover .box-overlay {
-  transform: translateX(0%);
-}
-
-.box-overlay-text {
-  text-align: center;
-  color: white;
+  transition: 0.3s;
+  width: 70%;
 }
 
 .addedToSaved {
-  background-color: black;
+  background-color: rgb(17, 131, 26);
 }
 // .box-overley-text {
 //   cursor: pointer;

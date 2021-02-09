@@ -9,13 +9,16 @@ const sesion = []
 let pars = 0;
 
 function savesOnClick(e) {
-  if (e.target.className === 'box-overlay') {
-    console.log(e.target.className);
+  if (e.target.className === 'box-overlay' || e.target.className ==='box-overlay-text') {
+    if (e.target.children[0]) {
+      e.target.children[0].textContent = 'added'
+    } else {
+     e.target.textContent ='added'
+    }
+
 
     let idImg = e.target.dataset.imgId
-
     console.log(idImg);
-
   const dataInvis =  e.target.dataset.added = 'invisible'
     let urlImg = e.target.dataset.imgSaved
     
@@ -79,8 +82,13 @@ function loadFromLocalStorage() {
         }
         // console.log(elFromLocal);
         elFromLocal.classList.add('addedToSaved')
+        elFromLocal.textContent ='added'
+        
+
+        
         // console.log(el.id);
-    })
+      })
+      
 
 }
 }catch{}
