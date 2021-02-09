@@ -6,7 +6,7 @@ import savedPictures from '../templates/saved-pictures-template.hbs'
 import { savesToLocalStorage, loadFromLocalStorage } from './saves-to-local-storage'
 
 
-const sevedPicture = []
+let sevedPicture = []
 
 
 
@@ -15,6 +15,7 @@ refs.hideSpiner.classList.remove('loader')
 refs.buttonHeaderSave.addEventListener('click', renderPageOnClick)
 
 function renderPageOnClick(e) {
+    sevedPicture=[]
     e.preventDefault()
      refs.ulGallery.innerHTML = ''
     loadFromLocalStorage()
@@ -24,7 +25,11 @@ function renderPageOnClick(e) {
         const parsedSettings = JSON.parse(getFromLocal);
         console.log(parsedSettings);
 
-        parsedSettings.forEach(el => sevedPicture.push({ url: el.url, id: el.id }))
+        parsedSettings.forEach(el => {
+            if (el.url) {
+                sevedPicture.push({ url: el.url, id: el.id })
+            }
+        })
     }
     activePages.isActiveHomePage = false
    
