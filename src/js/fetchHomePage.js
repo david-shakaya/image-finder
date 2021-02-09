@@ -40,6 +40,28 @@ export default function fetchHomePage(e) {
             const markup = galleryHomePage(data.hits)
         refs.ulGallery.innerHTML = markup
         refs.hideSpiner.classList.remove('loader')
+
+
+    /* -------------------- */
+        
+        const options = {
+  rootMargin: '95% ',
+  threshold: 1.0,
+};
+
+const onEntry = (entries, observer) => {
+  entries.forEach(entry => {
+    // тут можно писать логику для проверки вхождения
+      alert('msg');
+      console.log(entry);
+  });
+};
+
+const observer = new IntersectionObserver(onEntry, options);
+console.log(document.querySelector('.list-item-gallery'));
+observer.observe(document.querySelector('.list-item-gallery'))
+        
+        /* ---------------- */
         
         pagination(data)
         savesToLocalStorage()
