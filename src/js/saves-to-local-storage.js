@@ -1,104 +1,94 @@
-import refs from './refs'
-const sesion = []
+import refs from './refs';
+const sesion = [];
 
-
- function savesToLocalStorage() {
-    window.document.addEventListener('click', savesOnClick)
+function savesToLocalStorage() {
+  window.document.addEventListener('click', savesOnClick);
 }
+
+// Добавляем на спан addedToSaved
 
 let pars = 0;
 
 function savesOnClick(e) {
-  if (e.target.className === 'box-overlay' || e.target.className ==='box-overlay-text') {
+  if (
+    e.target.className === 'box-overlay' ||
+    e.target.className === 'box-overlay-text'
+  ) {
     if (e.target.children[0]) {
-      e.target.children[0].textContent = 'added'
+      e.target.children[0].textContent = 'added';
     } else {
-     e.target.textContent ='added'
+      e.target.textContent = 'added';
+      e.target.offsetParent.classList.add('addedToSaved');
+      // ???? Гдето сюда добавить зажиту от повторного нажатия на Текст. Получается дубляж картинок
     }
 
-
-    let idImg = e.target.dataset.imgId
+    let idImg = e.target.dataset.imgId;
     console.log(idImg);
-  const dataInvis =  e.target.dataset.added = 'invisible'
-    let urlImg = e.target.dataset.imgSaved
-    
-let isActive = 0
+    const dataInvis = (e.target.dataset.added = 'invisible');
+    let urlImg = e.target.dataset.imgSaved;
 
-// если в хран чтото есть перебираем и пушим.      
+    let isActive = 0;
+
+    // если в хран чтото есть перебираем и пушим.
     if (sesion.length > 0) {
-     
-       
-        sesion.find(el => {
+      sesion.find(el => {
         if (el.id !== idImg) {
           // console.log(idImg);
           if (isActive === 1) {
-            return
+            return;
           }
-          sesion.push({ url: urlImg, id: idImg, isVisible: dataInvis })
-          isActive+=1
+          sesion.push({ url: urlImg, id: idImg, isVisible: dataInvis });
+          isActive += 1;
           // console.log('ТУТ ПРОБЛЕМА');
         }
-      })
-    
+      });
     } else {
-      console.log('sdss');
-      sesion.push({ url: urlImg, id: idImg,isVisible:dataInvis })
+      sesion.push({ url: urlImg, id: idImg, isVisible: dataInvis });
     }
-    console.log(sesion);
-  localStorage.setItem(`sesion`, JSON.stringify(sesion)); 
-    e.target.classList.add('addedToSaved')
-    isActive =0
+    localStorage.setItem(`sesion`, JSON.stringify(sesion));
+    e.target.classList.add('addedToSaved'); //
+    isActive = 0;
   }
-  
-
 }
 
 function loadFromLocalStorage() {
-    const getFromLocal = localStorage.getItem('sesion')
+  const getFromLocal = localStorage.getItem('sesion');
   try {
     if (getFromLocal) {
       const parsedSettings = JSON.parse(getFromLocal);
 
-
-      const length = parsedSettings.length
+      const length = parsedSettings.length;
       console.log(sesion.length);
       console.log(parsedSettings.length);
       parsedSettings.find(el => {
-
         if (sesion.length === length) {
-          return
+          return;
         }
-        sesion.push(el)
-        // Когда загружаем обрезать сесион.ленгт 
+        sesion.push(el);
+        // Когда загружаем обрезать сесион.ленгт
         // console.log(el);
         // console.log(sesion);
-      })
+      });
 
       parsedSettings.map(el => {
-
         let elFromLocal = document.querySelector(`#${el.id}`);
         if (elFromLocal === null) {
-          elFromLocal =document.querySelector(`.git-logo`); 
+          elFromLocal = document.querySelector(`.git-logo`);
         }
         // console.log(elFromLocal);
-        elFromLocal.classList.add('addedToSaved')
-        elFromLocal.textContent ='added'
+        elFromLocal.classList.add('addedToSaved');
+        elFromLocal.textContent = 'added';
         // console.log(el.id);
-      })
-      
-
+      });
+    }
+  } catch {}
 }
-}catch{}
- }
 
 // parsedSettings.forEach(el => {
 //     console.log(el.url);
 //   })
 
-  
 // console.log(parsedSettings);
-
-
 
 // const saveStorage = (key, value) => {
 //   try {
@@ -119,4 +109,4 @@ function loadFromLocalStorage() {
 //   }
 // };
 
-export {savesToLocalStorage,loadFromLocalStorage}
+export { savesToLocalStorage, loadFromLocalStorage };

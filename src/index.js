@@ -8,7 +8,6 @@ import fetchHomePage from './js/fetchHomePage';
 import './js/render-saves-picture-page';
 import activePages from './js/activePages';
 import './js/observer-scroll';
-import './js/up-arrow';
 
 const input = refs.searchForm.firstElementChild;
 input.addEventListener('input', debounce(getsInputValue, 500));

@@ -1,9 +1,4 @@
 import refs from './refs';
-
-// function observesGallery() {
-
-// }
-
 const options = {
   rootMargin: '100px ',
   threshold: 1.0,
@@ -24,5 +19,4 @@ const onEntry = (entries, observer) => {
 };
 
 const observer = new IntersectionObserver(onEntry, options);
-console.log(document.querySelector('.header-nav-container'));
 observer.observe(document.querySelector('.header-nav-container'));

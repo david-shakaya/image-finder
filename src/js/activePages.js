@@ -1,6 +1,6 @@
 const activePage = {
-    isActiveHomePage: false,
-    isActiveSearchPage: false,
-} 
+  isActiveHomePage: false,
+  isActiveSearchPage: false,
+};
 
-export default activePage
+export default activePage;
