@@ -7,6 +7,7 @@ import debounce from 'lodash.debounce'
 import fetchHomePage from './js/fetchHomePage'
 import './js/render-saves-picture-page'
 import activePages from './js/activePages'
+import './js/up-arrow'
 
 
 

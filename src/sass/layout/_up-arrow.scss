@@ -1,0 +1,36 @@
+.up-arrow-button {
+  position: fixed;
+  transition-duration: 250ms;
+  width: 60px;
+  height: 60px;
+  bottom: 100px;
+  right: -62px;
+  background-image: url('../images/arr.png');
+  background-color: #494949;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  //   background-size: 40px;
+}
+
+.up-arrow {
+  position: fixed;
+  transition-duration: 600ms;
+  width: 60px;
+  height: 60px;
+  bottom: 100px;
+  right: 52px;
+  background-color: #3e26a8ce;
+  background-image: url('../images/arr.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  z-index: 1;
+
+  &:hover {
+    background-color: #3417b6f8;
+    transition-duration: 100ms;
+    width: 63px;
+    height: 63px;
+  }
+}
