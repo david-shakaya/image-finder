@@ -2,7 +2,6 @@ import refs from './refs';
 import activePages from './activePages';
 import savedPictures from '../templates/saved-pictures-template.hbs';
 // import loadStorage from './saves-to-local-storage'
-
 import {
   savesToLocalStorage,
   loadFromLocalStorage,
@@ -14,6 +13,10 @@ refs.hideSpiner.classList.remove('loader');
 refs.buttonHeaderSave.addEventListener('click', renderPageOnClick);
 
 function renderPageOnClick(e) {
+  if (refs.wrapperNotFound) {
+    refs.wrapperNotFound.classList.remove('img-wrapper-not-found');
+  }
+
   sevedPicture = [];
   e.preventDefault();
   refs.ulGallery.innerHTML = '';
