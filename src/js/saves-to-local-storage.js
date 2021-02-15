@@ -8,6 +8,7 @@ function savesToLocalStorage() {
 // Добавляем на спан addedToSaved
 
 let pars = 0;
+let prevenClicking = 0;
 
 function savesOnClick(e) {
   if (
@@ -16,9 +17,15 @@ function savesOnClick(e) {
   ) {
     if (e.target.children[0]) {
       e.target.children[0].textContent = 'added';
+      prevenClicking += 1;
     } else {
+      if (prevenClicking === 1) {
+        prevenClicking = 0;
+        return;
+      }
       e.target.textContent = 'added';
       e.target.offsetParent.classList.add('addedToSaved');
+      prevenClicking = 0;
       // ???? Гдето сюда добавить зажиту от повторного нажатия на Текст. Получается дубляж картинок
     }
 
